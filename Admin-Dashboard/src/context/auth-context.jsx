@@ -60,7 +60,6 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("role", response.data.user.role);
       if (response.data.user.role != "admin") {
         setError("You are not authorized");
-        // alert("You are not allowed to login");
       }
       setIsLoading(false);
 

@@ -17,14 +17,12 @@ function App() {
     <>
       <BrowserRouter>
         <AuthProvider>
-          {/* <div className={`flex justify-between`}> */}
           <Container>
             <Navbar />
             <Sidebar />
             <div className="container flex flex-col items-center  mt-5">
               <Routes>
                 <Route element={<Guard />}>
-                  {/* <Route path="/" element={<Jobs />} /> */}
                   <Route path="/" element={<Employers />} />
                   <Route path="/jobs" element={<Jobs />} />
                   <Route path="/users" element={<Users />} />
@@ -32,7 +30,6 @@ function App() {
                 <Route path="/login" element={<Login />} />
               </Routes>
             </div>
-            {/* </div> */}
           </Container>
         </AuthProvider>
       </BrowserRouter>
