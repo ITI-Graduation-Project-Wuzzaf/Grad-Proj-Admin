@@ -1,11 +1,43 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+
+import AuthProvider from "./context/auth-context";
+
 import "./App.css";
+import Jobs from "./pages/Jobs";
+import Sidebar from "./components/Sidebar";
+import Users from "./pages/Users";
+import Employers from "./pages/Employers";
+import Navbar from "./components/Navbar";
+import Login from "./pages/Login";
+import Guard from "./utils/Guard";
+import Container from "./components/Container";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <></>;
+  return (
+    <>
+      <BrowserRouter>
+        <AuthProvider>
+          {/* <div className={`flex justify-between`}> */}
+          <Container>
+            <Navbar />
+            <Sidebar />
+            <div className="container flex flex-col items-center  mt-5">
+              <Routes>
+                <Route element={<Guard />}>
+                  {/* <Route path="/" element={<Jobs />} /> */}
+                  <Route path="/" element={<Employers />} />
+                  <Route path="/jobs" element={<Jobs />} />
+                  <Route path="/users" element={<Users />} />
+                </Route>
+                <Route path="/login" element={<Login />} />
+              </Routes>
+            </div>
+            {/* </div> */}
+          </Container>
+        </AuthProvider>
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default App;
